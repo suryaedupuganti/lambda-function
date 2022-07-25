@@ -18,6 +18,11 @@ resource "aws_iam_role" "iam_for_lambda" {
 EOF
 }
 
+data "aws_s3_bucket_object" "jar_hash" {
+  bucket = var.deployment_bucket_name
+  key    = "${var.deployment_path_key}/${var.deployment_package_name}.zip"
+}
+
 resource "aws_lambda_function" "test_lambda" {
   function_name = "my-sample-lambda"
   s3_bucket        = var.deployment_bucket_name
