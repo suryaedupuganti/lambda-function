@@ -56,8 +56,10 @@ jobs:
         terraform init -input=false -backend-config="bucket=psi-lambda-function" -backend-config="key=terraform.tfstate"
 
     # Checks that all Terraform configuration files adhere to a canonical format
-    - name: Terraform Format
-      run: terraform fmt -check
+    - name: Terraform Validate
+      run: |
+        cd infrastructure
+        terraform validate 
 
     # # Generates an execution plan for Terraform
     # - name: Terraform Plan
