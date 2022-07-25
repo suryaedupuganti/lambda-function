@@ -23,7 +23,7 @@ resource "aws_lambda_function" "test_lambda" {
   s3_key = "${var.deployment_path_key}/${var.deployment_package_name}.zip"
   function_name = "my-sample-lambda"
   role          = aws_iam_role.iam_for_lambda.arn
-  handler       = "welcome.hello"
+  handler       = "welcome.hello_handler"
 
   runtime = "python3.8"
 }
