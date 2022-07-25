@@ -15,9 +15,9 @@ resource "aws_iam_role_" "lambda_role" {
 resource "aws_lambda_function" "test_lambda" {
   filename      = "${var.deployment_path_key}/${var.deployment_package_name}.zip"
   s3_bucket        = var.deployment_bucket_name
-  function_name = var.function_name
+  function_name = "welcome.py"
   role          = aws_iam_role.lambda_role.arn
   handler       = "welcome.hello"
 
-  runtime = "python3.9"
+  runtime = "python3.8"
 }
