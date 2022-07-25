@@ -66,4 +66,4 @@ jobs:
       run: | 
         cd infrastructure
         terraform plan -input=false -var-file dev.tfvars -out=tfplan
-        terraform apply tfplan -input=false -auto-approve
+        terraform apply tfplan -auto-approve
