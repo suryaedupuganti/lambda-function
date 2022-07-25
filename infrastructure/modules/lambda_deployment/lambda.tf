@@ -19,11 +19,11 @@ EOF
 }
 
 resource "aws_lambda_function" "test_lambda" {
+  function_name = "my-sample-lambda"
   s3_bucket        = var.deployment_bucket_name
   s3_key = "${var.deployment_path_key}/${var.deployment_package_name}.zip"
-  function_name = "my-sample-lambda"
   role          = aws_iam_role.iam_for_lambda.arn
-  handler       = "welcome.hello_handler"
+  handler       = "lambda_function.lambda_handler"
 
   runtime = "python3.8"
 }
